@@ -1,0 +1,20 @@
+<section class="text-center mt-3">
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let task of tasks" class="tasks">
+                <div>
+                    <!-- <img [src]="task?.image" alt="task"> -->
+                    <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="task">
+                </div>
+                <div>{{task?.username}}</div>
+                <div>{{task?.title}}</div>
+                <div>{{task?.content}}</div>
+                <div>
+                    <button type="button" class="btn btn-primary" (click)="update(task?.id)">Update</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

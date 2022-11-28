@@ -1,0 +1,68 @@
+<section class="mt-5">
+    <div class="container">
+        <h1 *ngIf="message" class="text-center">{{message}}</h1>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="row">
+                <div class="mb-3 col-md-6 col-12">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="title" #title="ngModel" ngModel required
+                        placeholder="Title" minlength="3" maxlength="100">
+                    <p *ngIf=" title.touched && title.errors && title.errors['required']  " class="alert alert-danger">
+                        Title Required
+                    </p>
+                    <p *ngIf=" title.touched && title.errors && title.errors['minlength'] " class="alert alert-danger">
+                        Title must be at least 3 characters
+                    </p>
+                    <p *ngIf=" title.touched && title.errors && title.errors['maxlength'] " class="alert alert-danger">
+                        Title must be at most 100 characters
+                    </p>
+                </div>
+                <div class="mb-3 col-md-6 col-12">
+                    <label>Content</label>
+                    <input type="text" class="form-control" name="content" #content="ngModel" ngModel required
+                        placeholder="Content" minlength="10" maxlength="255">
+                    <p *ngIf=" content.touched && content.errors && content.errors['required'] "
+                        class="alert alert-danger">
+                        Content Required
+                    </p>
+                    <p *ngIf=" content.touched && content.errors && content.errors['minlength'] "
+                        class="alert alert-danger">
+                        Content must be at least 10 characters
+                    </p>
+                    <p *ngIf=" content.touched && content.errors && content.errors['maxlength'] "
+                        class="alert alert-danger">
+                        Content must be at most 255 characters
+                    </p>
+                </div>
+                <div class="mb-3 col-md-6 col-12">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" #username="ngModel" ngModel required
+                        placeholder="Username" minlength="3" maxlength="100">
+                    <p *ngIf=" username.touched && username.errors && username.errors['required']  "
+                        class="alert alert-danger">
+                        Username Required
+                    </p>
+                    <p *ngIf=" username.touched && username.errors &&  username.errors['minlength'] "
+                        class="alert alert-danger">
+                        Username must be at least 3 characters
+                    </p>
+                    <p *ngIf=" username.touched && username.errors &&  username.errors['maxlength'] "
+                        class="alert alert-danger">
+                        Username must be at most 100 characters
+                    </p>
+                </div>
+                <div class="mb-3 col-md-6 col-12">
+                    <label>Image</label>
+                    <input type="file" (change)="upload($event)" class="form-control" name="image" #image="ngModel"
+                        ngModel required accept="image/*">
+                    <p *ngIf=" image.touched && image.errors && image.errors['required']" class="alert alert-danger">
+                        Image Required
+                    </p>
+                </div>
+            </div>
+            <div class="text-center ">
+                <button type="submit" class="btn btn-primary" [disabled]=" f.invalid || !image">Add Task</button>
+            </div>
+        </form>
+    </div>
+</section>
