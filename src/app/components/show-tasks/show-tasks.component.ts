@@ -9,15 +9,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ShowTasksComponent implements OnInit {
 
-  username: string | any;
+  username: string = 'asmaTask';
   tasks: any;
 
   constructor(private httpClient: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-
-    this.username = this.route.snapshot.paramMap.get('userName');
-
     this.httpClient.get('https://task.ecmpp.com/api/task/all/' + this.username).subscribe((res: any) => {
       this.tasks = res;
       console.log(this.tasks);

@@ -12,7 +12,7 @@ export class NewTaskComponent implements OnInit {
 
   image: File | any = "";
   message: string | any = null;
-
+  username:string = 'asmaTask'
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class NewTaskComponent implements OnInit {
     body.append('image', this.image, this.image.name);
     body.append('content', f.value.content);
     body.append('title', f.value.title);
-    body.append('username', f.value.username);
+    body.append('username', this.username);
 
     this.httpClient.post('https://task.ecmpp.com/api/task/add',
       body
